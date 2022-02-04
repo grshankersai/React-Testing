@@ -1,16 +1,25 @@
+/* eslint-disable testing-library/no-render-in-setup */
 /* eslint-disable testing-library/prefer-screen-queries */
 import React from 'react';
 import App from './App';
 import {render , fireEvent, getRoles} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
+let getByTestId;
+beforeEach(()=>{
+  // eslint-disable-next-line testing-library/render-result-naming-convention
+  const component = render(<App />);
+  getByTestId = component.getByTestId;
+  
+})
 
 test("Header renders with correct text", ()=>{
 
   // eslint-disable-next-line testing-library/render-result-naming-convention
-  const component = render(<App />);
+  //const component = render(<App />);
   // eslint-disable-next-line testing-library/prefer-screen-queries
-  const headerEl = component.getByTestId("header");
+  //const headerEl = component.getByTestId("header");
+  const headerEl = getByTestId("header");
   expect(headerEl.textContent).toBe("My Counter");
 
 
@@ -18,7 +27,7 @@ test("Header renders with correct text", ()=>{
 })
 
 test("Initial counter text to be 0",()=>{
-  const {getByTestId} = render(<App />);
+  
 
   // eslint-disable-next-line testing-library/prefer-screen-queries
   const counterVal = getByTestId("counter");
@@ -29,7 +38,7 @@ test("Initial counter text to be 0",()=>{
 
 test("Check the Change Factor Initial Value",()=>{
 
-  const {getByTestId} = render(<App />);
+  //const {getByTestId} = render(<App />);
 
   // eslint-disable-next-line testing-library/prefer-screen-queries
   const inputEle = getByTestId('factor');
@@ -39,7 +48,7 @@ test("Check the Change Factor Initial Value",()=>{
 })
 
 test("Increment Button renders with + Symbol",()=>{
-  const {getByTestId} = render(<App />);
+  //const {getByTestId} = render(<App />);
 
   // eslint-disable-next-line testing-library/prefer-screen-queries
   const addbtn = getByTestId("increment-button");
@@ -49,7 +58,7 @@ test("Increment Button renders with + Symbol",()=>{
 })
 
 test ("Check for decrement button render" , ()=>{
-  const {getByTestId} = render(<App/>);
+  //const {getByTestId} = render(<App/>);
 
   // eslint-disable-next-line testing-library/prefer-screen-queries
   const subbtn = getByTestId("decrement-button");
@@ -58,7 +67,7 @@ test ("Check for decrement button render" , ()=>{
 })
 
 test ("to check if the value of input element changes",()=>{
-  const {getByTestId} = render(<App />);  
+  //const {getByTestId} = render(<App />);  
   // eslint-disable-next-line testing-library/prefer-screen-queries
   const inputEle = getByTestId("factor");
   fireEvent.change(inputEle,{
@@ -72,7 +81,7 @@ test ("to check if the value of input element changes",()=>{
 })
 
 test("clicking on plus button adds 1 to counter",()=>{
-  const {getByTestId} = render(<App/>);
+  //const {getByTestId} = render(<App/>);
 
   // eslint-disable-next-line testing-library/prefer-screen-queries
   const btnEl = getByTestId('increment-button');
@@ -89,7 +98,7 @@ test("clicking on plus button adds 1 to counter",()=>{
 })
 
 test("Initial test for Sub-Button",()=>{
-  const {getByTestId} = render(<App/>);
+ // const {getByTestId} = render(<App/>);
   
   const subBtn = getByTestId('decrement-button');
   const counter= getByTestId('counter');
@@ -104,7 +113,7 @@ test("Initial test for Sub-Button",()=>{
 
 
 test("for adding the changed factor", ()=>{
-  const {getByTestId} = render(<App />);
+  //const {getByTestId} = render(<App />);
   const addBtn = getByTestId("increment-button");
   const subBtn = getByTestId("decrement-button");
   const factor = getByTestId("factor");
@@ -132,7 +141,7 @@ test("for adding the changed factor", ()=>{
 
 test("for Color Change",()=>{
 
-  const {getByTestId} = render(<App />);
+  //const {getByTestId} = render(<App />);
   const addBtn = getByTestId("increment-button");
   const subBtn = getByTestId("decrement-button");
   const factor = getByTestId("factor");
