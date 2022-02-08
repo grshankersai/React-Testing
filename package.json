@@ -39,5 +39,15 @@
   },
   "devDependencies": {
     "jest-sonar-reporter": "^2.0.0"
-  }
+  },"collectCoverageFrom": [
+    "**/*.{js,jsx}",
+    "**/*.{ts,tsx}",
+    "!**/node_modules/**",
+    "!**/vendor/**",
+    "!**/src/index.tsx",
+    "!**/src/App.tsx",
+    "!**/src/reportWebVitals.ts",
+    "!**/src/services/**"
+    
+  ]
 }
